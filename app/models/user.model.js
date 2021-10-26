@@ -46,7 +46,6 @@ class userModel {
             email: userDetails.email,
             password: userDetails.password,
         });
-
         // To create the hash of the password
         helper.passwordHash(newUser.password, (err, hash) => {
             if (hash) {

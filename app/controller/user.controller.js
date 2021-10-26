@@ -6,6 +6,7 @@
 */
 
 const userService = require('../service/user.service')
+const validation = require('../utilities/validation')
 
 class Controller {
 
@@ -23,7 +24,14 @@ class Controller {
                 email: req.body.email,
                 password: req.body.password
             };
-            console.log(user)
+            // To validate the data entered by user
+            const registerValidation = validation.registerValidation.validate(user);
+            if (registerValidation.error){
+                return res.status(422).json({
+                    success: false,
+                    message: "validation failed", 
+                })
+            }
             userService.registerUser(user, (error, data) => {
                 if (error) {
                     return res.status(400).json({
