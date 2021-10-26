@@ -5,6 +5,8 @@
 */
 
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
 
 class helper{
  /**
@@ -21,5 +23,42 @@ class helper{
             }
         })
     }
+
+    /**
+   * @description:    Creates token for recieved data
+   * @method:         token for generating token
+   * @param:          data for generating token, callback
+   */
+
+  token = (data, callback) => {
+    const key = jwt.sign({
+    firstName: data.firstName,
+    lastName: data.lastName,
+    id: data._id
+    }, process.env.SECRET_KEY);
+    if (key){
+        return callback(null, key);    
+    }else{
+        return callback(err, null);
+    }
+  }
+  /**
+   * @description:    Creates token for forgot password data
+   * @method:         tokenForgotPassword for token
+   * @param:          data for generating token, callback
+   */
+   tokenForgotPassword = (data, callback) => {
+    const key = jwt.sign({
+    firstName: data.firstName,
+    lastName: data.lastName,
+    email: data.email,
+    password: data.password
+    }, process.env.SECRET_KEY);
+    if (key){
+        return callback(null, key);    
+    }else{
+        return callback(err, null);
+    }
+  }
 }
 module.exports = new helper();

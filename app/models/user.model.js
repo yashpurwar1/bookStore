@@ -63,5 +63,16 @@ class userModel {
             }
         });
     }
+
+    findEmail = (loginData, callBack) => {
+        //To find a user email in the database
+        user.findOne({ email: loginData.email }, (error, data) => {
+            if (data) {
+                return callBack(null, data);           
+            } else{
+                return callBack("Invalid email", null);
+            }
+        });
+    }
 }
 module.exports = new userModel();
