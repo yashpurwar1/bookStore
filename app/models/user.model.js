@@ -6,6 +6,7 @@
  */
 
 const mongoose = require('mongoose');
+const helper = require('../utilities/helper')
 const userSchema = mongoose.Schema({
     firstName: {
         type: String,
@@ -46,13 +47,22 @@ class userModel {
             password: userDetails.password,
         });
 
-        newUser.save().then(
-            ()=>{
-                return callback(null, newUser);
-            }).catch(
-            () => {
-                return callback("Email already registered", null)
-            })
+        // To create the hash of the password
+        helper.passwordHash(newUser.password, (err, hash) => {
+            if (hash) {
+            newUser.password = hash;
+            //To the the user in the database
+            newUser.save().then(
+                ()=>{
+                    return callback(null, newUser);
+                }).catch(
+                () => {
+                    return callback("Email already registered", null)
+                })
+            }else {
+            return callback("Internal error", null)
+            }
+        });
     }
 }
 module.exports = new userModel();
