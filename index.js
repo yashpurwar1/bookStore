@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 const dbConfig = require('./config/database.config.js');
 dbConfig.connection();
 
-// require('./app/routes/user.routes.js')(app);
+require('./app/routes/user.routes.js')(app);
 
 // listen for requests
 app.listen(process.env.PORT, () => {
