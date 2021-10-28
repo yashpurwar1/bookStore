@@ -24,6 +24,14 @@ class helper{
         })
     }
 
+    setRole = (role) => {
+        return (req, res, next) => {
+            req.role = role;
+            next();
+            console.log(req.role)
+        }
+    }
+
     /**
    * @description:    Creates token for recieved data
    * @method:         token for generating token

@@ -23,7 +23,8 @@ class Controller {
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 email: req.body.email,
-                password: req.body.password
+                password: req.body.password,
+                role: req.role
             };
             // To validate the data entered by user
             const registerValidation = validation.registerValidation.validate(user);

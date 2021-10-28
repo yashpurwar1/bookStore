@@ -25,6 +25,10 @@ const userSchema = mongoose.Schema({
         type: String,
         minlength: 5
     },
+    role: {
+        type: String,
+        minlength: 3
+    },
     },
     {
         timestamps: true
@@ -45,6 +49,7 @@ class userModel {
             lastName: userDetails.lastName,
             email: userDetails.email,
             password: userDetails.password,
+            role:userDetails.role
         });
         // To create the hash of the password
         helper.passwordHash(newUser.password, (err, hash) => {

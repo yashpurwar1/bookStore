@@ -5,11 +5,12 @@
 * @author:         Yash
 */
 
+const helper = require('../utilities/helper')
 const controller = require('../controller/user.controller')
-module.exports=(app) =>{  
+module.exports=(app) =>{
     //Api route for user
-    app.post('/register',controller.register);
+    app.post('/user/registration', helper.setRole('user'), controller.register);
+    app.post('/admin/registration',helper.setRole('admin'), controller.register);
     app.post('/login', controller.login);
     app.post('/forgotPassword', controller.forgotPassword);
-
 }

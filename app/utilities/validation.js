@@ -25,8 +25,10 @@
 
         password: Joi.string()
             .pattern(new RegExp('^[a-zA-Z0-9!@#$%^&*]{6,16}$'))
+            .required(),
+        
+        role: Joi.string()
             .required()
-
     })
 
     loginValidation =Joi.object({
