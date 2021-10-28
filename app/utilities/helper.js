@@ -42,6 +42,8 @@ class helper{
     const key = jwt.sign({
     firstName: data.firstName,
     lastName: data.lastName,
+    email: data.email,
+    role: data.role,
     id: data._id
     }, process.env.SECRET_KEY);
     if (key){
@@ -74,35 +76,47 @@ class helper{
    * @method:         verifyToken for entered token and pass it to next
    * @param:          req, res, next
    */
-    verifyToken = (req, res, next) => {
-        const header = req.headers.authorization;
-        const bearerToken = header.split(' ');
-        const token = bearerToken[1];
-        try {
-          if (token) {
-            jwt.verify(token, process.env.SECRET_KEY, (error, data) => {
-              if (error) {
-                return res.status(401).send({ 
-                  success: false, 
-                  message: 'Unauthorized Token or token expired'
-                })
-              } else {
-                req.user = data;
-                next();
-              }
-            });
+  verifyToken = (req, res, next) => {
+    const header = req.headers.authorization;
+    const bearerToken = header.split(' ');
+    const token = bearerToken[1];
+    try {
+      if (token) {
+        jwt.verify(token, process.env.SECRET_KEY, (error, data) => {
+          if (error) {
+            return res.status(401).send({ 
+              success: false, 
+              message: 'Unauthorized Token or token expired'
+            })
           } else {
-            return res.status(401).send({
-                success: false,
-                message: 'Invalid Token' 
-              });
-            }
-        } catch (error) {
-          return res.status(500).send({
+            req.user = data;
+            next();
+          }
+        });
+      } else {
+        return res.status(401).send({
             success: false,
-            message: 'Something went wrong!' 
+            message: 'Invalid Token' 
           });
         }
+    } catch (error) {
+      return res.status(500).send({
+        success: false,
+        message: 'Something went wrong!' 
+      });
     }
+  }
+
+  verifyRole = (req, res, next)=>{
+    if(req.user.role == "admin"){
+      next()
+    }
+    else{
+      return res.status(401).send({ 
+        success: false, 
+        message: 'Unauthentic user'
+      })
+    }
+  }
 }
 module.exports = new helper();

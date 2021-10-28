@@ -34,9 +34,9 @@ class userService {
      loginUser = (loginDetails, callback) => {
         userModel.findEmail(loginDetails, (err, data) => {
             if(err){
-            logger.error(err)
             return callback (err, null);
             }else{
+                console.log(data)
                 //compares the hashed password with the original one
                 bcrypt.compare(loginDetails.password, data.password, (err, result) => {
                     if(result){
