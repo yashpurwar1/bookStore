@@ -71,7 +71,7 @@ class BookController{
         })
         .catch((error) => {
           return res.status(400).json({
-            message: error,
+            message: "Not able to fetch",
             success: false
           });
         })

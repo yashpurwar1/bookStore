@@ -3,11 +3,15 @@ require("dotenv").config();
 // create express app
 const app = express();
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger/swagger.json');
+
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }))
 
 // parse requests of content-type - application/json
 app.use(express.json())
+app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 // define a simple route

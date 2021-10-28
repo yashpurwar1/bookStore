@@ -61,7 +61,7 @@
               resolve(data)
             })
             .catch((error) => {
-              reject("Not able to fetch")
+              reject(error)
             })
         })
     }

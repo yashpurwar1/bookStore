@@ -1,0 +1,211 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0",
+        "title": "Book Store App",
+        "description": "Book Store Application"
+    },
+    "host": "localhost:5000",
+    "basePath": "/",
+    "tags": [],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+
+    "definitions": {
+        "registerUser": {
+            "type": "object",
+            "properties": {
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+                
+            }
+        },
+        "loginUser": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "forgotPassword": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            }
+        },
+
+        "resetPassword": {
+            "type": "object",
+            "properties": {
+                "newPassword": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "paths": {
+        "/admin/registration": {
+            "post": {
+                "tags": ["Register"],
+                
+                "description": "Register new user",
+                "parameters": [
+                    {
+                        "name": "Register",
+                        "in": "body",
+                        "description": "Register",
+                        "schema": { 
+                            "$ref": "#/definitions/registerUser"
+                        }
+                    }
+                ],
+
+                "produces": ["application/json"],
+                "responses": {
+                    "201": {
+                        "description": "New user is Registered"
+                    },
+                    "409": {
+                        "description": "User already exist"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/user/registration": {
+            "post": {
+                "tags": ["Register"],
+                
+                "description": "Register new user",
+                "parameters": [
+                    {
+                        "name": "Register",
+                        "in": "body",
+                        "description": "Register",
+                        "schema": { 
+                            "$ref": "#/definitions/registerUser"
+                        }
+                    }
+                ],
+
+                "produces": ["application/json"],
+                "responses": {
+                    "201": {
+                        "description": "New user is Registered"
+                    },
+                    "409": {
+                        "description": "User already exist"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": ["Login"],
+                "description": "Login user",
+                "parameters": [
+                    {
+                        "name": "Login",
+                        "in": "body",
+                        "description": "Login",
+                        "schema": {
+                            "$ref": "#/definitions/loginUser"
+                        }
+                    }
+                ],
+
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/forgotPassword": {
+            "post": {
+                "tags": ["Forgot-Password"],
+                "description": "Forgot Password user",
+                "parameters": [
+                    {
+                        "name": "Forgot Password",
+                        "in": "body",
+                        "description": "Enter your registered Mail",
+                        "schema": {
+                            "$ref": "#/definitions/forgotPassword"
+                        }
+                    }
+                ],
+
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "400": {
+                        "description": "Error"
+                    }
+                }
+            }
+        },
+        "/resetPassword": {
+            "put": {
+                "tags": ["Reset-Password"],
+                "description": "Reset Password User",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Enter token recieved in mail",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Reset Password",
+                        "in": "body",
+                        "description": "Enter New Password",
+                        "schema": {
+                            "$ref": "#/definitions/resetPassword"
+                        }
+                    }
+                ],
+
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "400": {
+                        "description": "Error"
+                    }
+                }
+            }
+        }
+    }
+}
