@@ -79,6 +79,21 @@ class userService {
             }
         });
     };
+
+    /**
+     * @description:    Send response to the controller
+     * @method:         resetPassword
+     * @param:          user, callback for controller
+     */
+     resetPassword = (user, callback) =>{         
+        userModel.resetPassword(user, (error, data)=>{
+            if(error){
+                return callback(error, null)               
+            }else{
+                return callback(null, data)
+            }
+        })
+    };
 }
 module.exports = new userService();
   

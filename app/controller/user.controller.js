@@ -130,6 +130,7 @@ class Controller {
                            <p>${process.env.RESET_URL}/resetPassword/${data}</p>
                          `
                     }
+                    console.log(data)
                     nodemailer.sendEmail(forgotPasswordMessage);
                     return res.status(250).json({
                         message: "Mail Sent Successful",
@@ -146,6 +147,39 @@ class Controller {
             });
         }
 
+    }
+
+    /**
+     * @description:    Resets the user password by authenticating token
+     * @method:         resetPassword
+     * @param:          req,res for service
+     */
+     resetPassword = (req, res) => {
+        try{
+            const user = {
+                email: req.user.email,
+                newPassword: req.body.newPassword
+            }
+            userService.resetPassword(user, (error, data) => {
+                if(error){
+                    return res.status(400).json({
+                        message: error,
+                        success: false
+                    })
+                }
+                return res.status(204).json({
+                    message: data,
+                    success: true
+                })
+
+            })
+        }
+        catch(error){
+            return res.status(500).json({
+                message: "Internal server error",
+                success: false
+            })
+        }
     }
 }
 module.exports = new Controller();

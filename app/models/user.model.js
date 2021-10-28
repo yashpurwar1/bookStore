@@ -79,5 +79,38 @@ class userModel {
             }
         });
     }
+
+    /**
+     * @description:    Reset the password of the user
+     * @param:          resetPassword
+     * @param:          user and callback for service
+     */
+     resetPassword = (newUser, callback) =>{
+        //To find a user in the database by the user email
+        user.findOne({email: newUser.email }, (error, data) =>{
+            if(error){
+                return callback("No user found with following email", null)
+            }else{
+                // To generate the hash of the password
+                helper.passwordHash(newUser.newPassword, (err, hash) => {
+                    if (hash) {
+                        const updatedPassword = hash;
+                        // To update the old password with the new one
+                        user.updateOne({"_id": data._id}, {"password": updatedPassword}, (error, data) => {
+                            if(data.acknowledged == true){
+                                return callback (null, "Updated successfully")
+                            }
+                            else{
+                                return callback ("Error in updating", null)
+                            }
+                        })
+                    }
+                    else{
+                        return callback ("Error in hash on password", null)
+                    }
+                })
+            }
+        })
+    }
 }
 module.exports = new userModel();

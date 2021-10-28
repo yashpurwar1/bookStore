@@ -13,4 +13,5 @@ module.exports=(app) =>{
     app.post('/admin/registration',helper.setRole('admin'), controller.register);
     app.post('/login', controller.login);
     app.post('/forgotPassword', controller.forgotPassword);
+    app.put('/resetPassword', helper.verifyToken ,controller.resetPassword);
 }

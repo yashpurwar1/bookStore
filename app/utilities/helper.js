@@ -68,5 +68,41 @@ class helper{
         return callback(err, null);
     }
   }
+
+    /**
+   * @description:    Verifies token and returns data
+   * @method:         verifyToken for entered token and pass it to next
+   * @param:          req, res, next
+   */
+    verifyToken = (req, res, next) => {
+        const header = req.headers.authorization;
+        const bearerToken = header.split(' ');
+        const token = bearerToken[1];
+        try {
+          if (token) {
+            jwt.verify(token, process.env.SECRET_KEY, (error, data) => {
+              if (error) {
+                return res.status(401).send({ 
+                  success: false, 
+                  message: 'Unauthorized Token or token expired'
+                })
+              } else {
+                req.user = data;
+                next();
+              }
+            });
+          } else {
+            return res.status(401).send({
+                success: false,
+                message: 'Invalid Token' 
+              });
+            }
+        } catch (error) {
+          return res.status(500).send({
+            success: false,
+            message: 'Something went wrong!' 
+          });
+        }
+    }
 }
 module.exports = new helper();
