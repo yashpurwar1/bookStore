@@ -1,6 +1,6 @@
 /**
  * @module:         service
- * @file:           note.service.js
+ * @file:           book.service.js
  * @description:    callbacks from the model and takes input from controller
  * @author:         Yash
  */
@@ -9,12 +9,11 @@
  class BookService {
    /**
        * @description:    Send response to the controller
-       * @method:         createNote
-       * @param:          note
+       * @method:         createBook
+       * @param:          book
        */
    createBook = (book) => {
      return new Promise((resolve, reject) => {
-         console.log("in service")
        bookModel.createBook(book)
          .then((data) => {
            resolve(data)
@@ -23,6 +22,22 @@
            reject()
          })
      })
-   }
+    }
+
+    /**
+      * @description:    Send response to the controller
+      * @method:         getBook
+      */
+  getBooks = () => {
+    return new Promise((resolve, reject) => {
+      bookModel.getBooks()
+        .then((data) => {
+          resolve(data)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+  }
 }
 module.exports = new BookService()

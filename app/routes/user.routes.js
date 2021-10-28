@@ -17,4 +17,5 @@ module.exports=(app) =>{
     app.put('/resetPassword', helper.verifyToken ,controller.resetPassword);
 
     app.post('/createBook', helper.verifyToken, helper.verifyRole, bookController.createBook)
+    app.get('/getBooks', helper.verifyToken, bookController.getBooks)
 }

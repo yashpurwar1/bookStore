@@ -44,13 +44,26 @@
        });
        //Saves the data in the database
        bookInfo.save()
-         .then((data) =>{
-           resolve(data)
-         })
-         .catch(() => {
-           reject()
-         })
-     })
-   }
+            .then((data) =>{
+                resolve(data)
+            })
+            .catch(() => {
+                reject()
+            })
+        })
+    }
+
+    getBooks = () => {
+        return new Promise((resolve, reject) =>{
+          //Finds all the books in the database
+          Books.find({})
+            .then((data) => {
+              resolve(data)
+            })
+            .catch((error) => {
+              reject("Not able to fetch")
+            })
+        })
+    }
 }
 module.exports = new BookModel();
