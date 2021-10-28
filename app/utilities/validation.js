@@ -39,7 +39,20 @@
         password: Joi.string()
             .pattern(new RegExp('^[a-zA-Z0-9!@#$%^&*]{6,16}$'))
             .required()
+    });
 
+    createValidate = Joi.object({
+        title: Joi.string()
+            .required(),
+        description: Joi.string()
+            .required()
+            .min(10),
+        price: Joi.number()
+            .required(),
+        author: Joi.string()
+            .required(),
+        addedBy: Joi.string()
+            .required()
     });
 }
 module.exports = new validation();

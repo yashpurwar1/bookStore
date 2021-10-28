@@ -6,7 +6,7 @@
 */
 
 const bookService = require('../service/book.service');
-//const validation = require('../utilities/bookValidation');
+const validation = require('../utilities/validation');
 
 class BookController{
   /**
@@ -25,13 +25,14 @@ class BookController{
       }
       console.log(book)
       // To validate the data entered by user
-    //   const validate = validation.createValidate.validate(book);
-    //   if (validate.error){
-    //     return res.status(422).json({
-    //         success: false,
-    //         message: "validation failed", 
-    //     })
-    //   }
+      const validate = validation.createValidate.validate(book);
+      if (validate.error){
+          console.log(validate.error)
+        return res.status(422).json({
+            success: false,
+            message: "validation failed", 
+        })
+      }
       bookService.createBook(book)
         .then((data) => {
           return res.status(201).json({
