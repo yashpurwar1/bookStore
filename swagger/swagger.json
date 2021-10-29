@@ -58,6 +58,23 @@
                     "type": "string"
                 }
             }
+        },
+        "book": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "string"
+                },
+                "author": {
+                    "type": "string"
+                }
+            }
         }
     },
     "paths": {
@@ -200,6 +217,43 @@
                 "responses": {
                     "200": {
                         "description": "ok"
+                    },
+                    "400": {
+                        "description": "Error"
+                    }
+                }
+            }
+        },
+        "/createBook": {
+            "post": {
+                "tags": ["CreateBook"],
+                
+                "description": "Create a New Book",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Enter token recieved in login",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Create Book",
+                        "in": "body",
+                        "description": "Create a new Book",
+                        "schema": { 
+                            "$ref": "#/definitions/book"
+                        }
+                    }
+                ],
+                "produces": ["application/json"],
+                "responses": {
+                    "201": {
+                        "description": "ok"
+                    },
+                    "401":{
+                        "description": "Unauthorized token"
                     },
                     "400": {
                         "description": "Error"
