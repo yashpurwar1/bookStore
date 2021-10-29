@@ -260,6 +260,72 @@
                     }
                 }
             }
+        },
+        "/getBooks": {
+            "get": {
+                "tags": ["Get Books"],
+                
+                "description": "Get all the Books",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Enter token recieved in login",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "401":{
+                        "description": "Unauthorized token"
+                    },
+                    "400": {
+                        "description": "Error"
+                    }
+                }
+            }
+        },
+        "/deleteBook/{id}": {
+            "delete": {
+                "tags": ["Delete book By Id"],
+                
+                "description": "Delete book for a particular id",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Enter token recieved in login",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Enter id of the book",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "produces": ["application/json"],
+                "responses": {
+                    "204": {
+                        "description": "ok"
+                    },
+                    "401":{
+                        "description": "Unauthorized token"
+                    },
+                    "400": {
+                        "description": "Error"
+                    }
+                }
+            }
         }
     }
 }
