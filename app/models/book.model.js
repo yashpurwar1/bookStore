@@ -65,5 +65,18 @@
             })
         })
     }
+
+    deleteBook = (id) => {
+        return new Promise((resolve, reject) =>{
+          //Finds all the books in the database
+          Books.findOneAndDelete({ _id: id.id})
+            .then((data) => {
+              resolve(data)
+            })
+            .catch((error) => {
+              reject(error)
+            })
+        })
+    }
 }
 module.exports = new BookModel();

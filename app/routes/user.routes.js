@@ -18,4 +18,5 @@ module.exports=(app) =>{
 
     app.post('/createBook', helper.verifyToken, helper.verifyRole, bookController.createBook)
     app.get('/getBooks', helper.verifyToken, bookController.getBooks)
+    app.delete('/deleteBook/:id', helper.verifyToken, helper.verifyRole, bookController.deleteBook)
 }

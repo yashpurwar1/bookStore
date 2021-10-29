@@ -45,7 +45,7 @@ class BookController{
                     success: false
                 })
                 })
-            }
+        }
         catch(error){
             return res.status(500).json({
                 message: "Internal server error",
@@ -59,28 +59,67 @@ class BookController{
      * @method:         getBooks
      * @param:          req,res for service
      */
-  getBooks = (req, res) => {
-    try {
-      bookService.getBooks()
-        .then((data) => {
-          return res.status(200).json({
-            message: 'Fetched successfully',
-            success: true,
-            data: data
-          });
-        })
-        .catch((error) => {
-          return res.status(400).json({
-            message: "Not able to fetch",
-            success: false
-          });
-        })
-    } 
-    catch {
-      return res.status(500).json({
-        message: 'Internal server Error'
-      });
+    getBooks = (req, res) => {
+        try {
+            bookService.getBooks()
+            .then((data) => {
+                return res.status(200).json({
+                message: 'Fetched successfully',
+                success: true,
+                data: data
+                });
+            })
+            .catch((error) => {
+                return res.status(400).json({
+                message: "Not able to fetch",
+                success: false
+                });
+            })
+        } 
+        catch {
+            return res.status(500).json({
+                message: 'Internal server Error'
+            });
+        }
     }
-  }
+
+    /**
+     * @description:    Deletes book by id
+     * @method:         deleteBook
+     * @param:          req,res for service
+     */
+     deleteBook = (req, res) => {
+        try {
+            const id = {
+                id: req.params.id
+            } 
+            bookService.deleteBook(id)
+            .then((data) => {
+                if(data==null){
+                    return res.status(401).json({
+                        message: 'Invalid bookId',
+                        success: false
+                        });
+                }else{
+                    return res.status(200).json({
+                        message: 'Deleted successfully',
+                        success: true,
+                        data: data
+                    });
+                }
+            })
+            .catch((error) => {
+                return res.status(400).json({
+                message: "Not able to fetch",
+                success: false
+                });
+            })
+        } 
+        catch {
+            return res.status(500).json({
+                message: 'Internal server Error'
+            });
+        }
+    }
 }
 module.exports = new BookController();

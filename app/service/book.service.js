@@ -28,16 +28,32 @@
       * @description:    Send response to the controller
       * @method:         getBook
       */
-  getBooks = () => {
-    return new Promise((resolve, reject) => {
-      bookModel.getBooks()
-        .then((data) => {
-          resolve(data)
+    getBooks = () => {
+        return new Promise((resolve, reject) => {
+        bookModel.getBooks()
+            .then((data) => {
+            resolve(data)
+            })
+            .catch((error) => {
+            reject(error)
+            })
         })
-        .catch((error) => {
-          reject(error)
+    }
+
+    /**
+      * @description:    Send response to the controller
+      * @method:         deleteBook
+      */
+     deleteBook = (id) => {
+        return new Promise((resolve, reject) => {
+        bookModel.deleteBook(id)
+            .then((data) => {
+            resolve(data)
+            })
+            .catch((error) => {
+            reject(error)
+            })
         })
-    })
-  }
+    }
 }
 module.exports = new BookService()
