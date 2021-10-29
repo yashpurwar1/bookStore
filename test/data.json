@@ -1,0 +1,36 @@
+{
+    "registration":{
+        "correctRegister":{
+            "firstName":"Yash",
+            "lastName": "Purwar",
+            "email": "yash21@gmail.com",
+            "password": "yash76652"
+        },
+        "registerWithDuplicateEmail":{
+            "firstName":"Yash",
+            "lastName": "Purwar",
+            "email": "atul@gmail.com",
+            "password": "yash76652"
+        },
+        "registerWithoutFirstName":{
+            "lastName": "Purwar",
+            "email": "yash19@gmail.com",
+            "password": "yash76652"
+        },
+        "registerWithoutLastName":{
+            "firstName":"Yash",
+            "email": "yash13@gmail.com",
+            "password": "yash76652"
+        },
+        "registerWithoutEmail":{
+            "firstName":"Yash",
+            "lastName": "Purwar",
+            "password": "yash76652"
+        },
+        "registerWithoutPassword":{
+            "firstName":"Yash",
+            "lastName": "Purwar",
+            "email": "yash13@gmail.com"
+        }
+    }
+}
