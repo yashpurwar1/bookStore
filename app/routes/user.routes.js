@@ -16,7 +16,7 @@ module.exports=(app) =>{
     app.post('/forgotPassword', controller.forgotPassword);
     app.put('/resetPassword', helper.verifyToken ,controller.resetPassword);
 
-    app.post('/createBook', helper.verifyToken, helper.verifyRole, bookController.createBook)
+    app.post('/createBook', helper.verifyTokenAndRole, bookController.createBook)
     app.get('/getBooks', helper.verifyToken, bookController.getBooks)
-    app.delete('/deleteBook/:id', helper.verifyToken, helper.verifyRole, bookController.deleteBook)
+    app.delete('/deleteBook/:id', helper.verifyTokenAndRole, bookController.deleteBook)
 }

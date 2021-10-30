@@ -107,16 +107,49 @@ class helper{
     }
   }
 
-  verifyRole = (req, res, next)=>{
-    if(req.user.role == "admin"){
-      next()
+    /**
+   * @description:    Verifies token and returns data
+   * @method:         verifyToken for entered token and pass it to next
+   * @param:          req, res, next
+   */
+     verifyTokenAndRole = (req, res, next) => {
+      const header = req.headers.authorization;
+      const bearerToken = header.split(' ');
+      const token = bearerToken[1];
+      try {
+        if (token) {
+          jwt.verify(token, process.env.SECRET_KEY, (error, data) => {
+            console.log((data))
+            if (error) {
+              return res.status(401).send({ 
+                success: false, 
+                message: 'Unauthorized Token or token expired'
+              })
+            } 
+            else if(data.role != "admin"){
+              console.log("elseIf", req.user.role)
+              return res.status(401).send({ 
+                success: false, 
+                message: 'Unauthentic user'
+              })
+            }else {
+              req.user = data;
+              console.log(data)
+              next();
+            }
+          });
+        } else {
+          return res.status(401).send({
+              success: false,
+              message: 'Invalid Token' 
+            });
+          }
+      } catch (error) {
+        return res.status(500).send({
+          success: false,
+          message: 'Something went wrong!' 
+        });
+      }
     }
-    else{
-      return res.status(401).send({ 
-        success: false, 
-        message: 'Unauthentic user'
-      })
-    }
-  }
 }
 module.exports = new helper();
