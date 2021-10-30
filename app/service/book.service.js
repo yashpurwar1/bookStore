@@ -40,6 +40,19 @@
         })
     }
 
+  /**
+  * @description:    Send response to the controller
+  * @method:         updateBookById
+  * @param:          book
+  */
+  updateBookById = async (book) => {
+    try{
+      return await bookModel.updateBookById(book)
+    }
+    catch(error){
+      return error;
+    }
+  }
     /**
       * @description:    Send response to the controller
       * @method:         deleteBook

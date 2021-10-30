@@ -88,7 +88,7 @@ class BookController{
      * @method:         deleteBook
      * @param:          req,res for service
      */
-     deleteBook = (req, res) => {
+    deleteBook = (req, res) => {
         try {
             const id = {
                 id: req.params.id
@@ -121,5 +121,51 @@ class BookController{
             });
         }
     }
+
+    /**
+     * @description:    Updates the note given by the user
+     * @method:         updates the note for the user
+     * @param:          req,res for service
+     */
+    updateBookById = async (req, res)=>{
+    try{
+        const book ={
+            addedBy: req.user.email,
+            bookId: req.params.id,
+            title: req.body.title,
+            description: req.body.description,
+            price: req.body.price,
+            author: req.body.author
+        }
+
+      // To validate the data entered by user
+      const validate = validation.updateValidate.validate(book);
+      if (validate.error){
+        return res.status(422).json({
+            success: false,
+            message: "validation failed", 
+        })
+      }
+      const data = await bookService.updateBookById(book)
+      if (data.name){
+        return res.status(400).json({
+          message: "Book not updated",
+          success: false
+        });
+      }else{
+        return res.status(200).json({
+          message: 'Updated successfully',
+          success: true,
+          data: data
+        });
+      }
+    }
+    catch(error){
+      logger.error(error)
+      return res.status(500).json({
+        message: 'Internal server Error'
+      });
+    }
+  }
 }
 module.exports = new BookController();

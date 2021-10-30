@@ -66,6 +66,18 @@
         })
     }
 
+    updateBookById = async (book) => {
+      const filter = {_id: book.bookId};
+      const update = {title: book.title, description: book.description, price: book.price, author: book.author};
+      try{
+        // Updates the note for the given title or description in the database
+        return await Books.findOneAndUpdate(filter, update, {new: true})
+      }
+      catch(error){
+        return error;
+      }
+    }
+
     deleteBook = (id) => {
         return new Promise((resolve, reject) =>{
           //Finds all the books in the database

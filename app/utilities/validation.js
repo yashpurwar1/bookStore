@@ -54,5 +54,14 @@
         addedBy: Joi.string()
             .required()
     });
+
+    updateValidate = Joi.object({
+        bookId: Joi.string(),
+        title: Joi.string(),
+        description: Joi.string(),
+        price: Joi.number(),
+        author: Joi.string(),
+        addedBy: Joi.string()
+    });
 }
 module.exports = new validation();

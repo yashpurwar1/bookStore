@@ -119,7 +119,6 @@ class helper{
       try {
         if (token) {
           jwt.verify(token, process.env.SECRET_KEY, (error, data) => {
-            console.log((data))
             if (error) {
               return res.status(401).send({ 
                 success: false, 
@@ -127,14 +126,12 @@ class helper{
               })
             } 
             else if(data.role != "admin"){
-              console.log("elseIf", req.user.role)
               return res.status(401).send({ 
                 success: false, 
                 message: 'Unauthentic user'
               })
             }else {
               req.user = data;
-              console.log(data)
               next();
             }
           });
