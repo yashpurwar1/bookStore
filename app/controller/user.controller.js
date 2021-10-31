@@ -130,7 +130,6 @@ class Controller {
                            <p>${process.env.RESET_URL}/resetPassword/${data}</p>
                          `
                     }
-                    console.log(data)
                     nodemailer.sendEmail(forgotPasswordMessage);
                     return res.status(250).json({
                         message: "Mail Sent Successful",

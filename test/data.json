@@ -52,5 +52,13 @@
         "loginWithoutEmail":{
             "password": "yash76652000"
         }
+    },
+    "forgotPassword":{
+        "ValidEmail":{
+            "email": "yashpurwar.yashpurwar@gmail.com"
+        },
+        "invalidEmail":{
+            "email": "ghjk@gmail.com"
+        }
     }
 }

@@ -274,3 +274,40 @@ describe('login', () => {
       });
   });
 });
+describe ('forgotPassword', () =>{
+
+  it('givenForgotPasswordEmailWhenValidShouldReturn250Status', (done) => {
+    const email = data.forgotPassword.ValidEmail;
+    chai
+      .request(index)
+      .post('/forgotPassword')
+      .send(email)
+      .end((err, res) => {
+        if (err) {
+          return done(err);
+        }
+        res.should.have.status(250);
+        res.body.should.have.property("success").eql(true);
+        res.body.should.have.property("message").eql("Mail Sent Successful");
+        done();
+      });
+  });
+
+  it('givenForgotPasswordEmailWhenInvalidShouldReturn400Status', (done) => {
+    const email = data.forgotPassword.InvalidEmail;
+    chai
+      .request(index)
+      .post('/forgotPassword')
+      .send(email)
+      .end((err, res) => {
+        if (err) {
+          return done(err);
+        }
+        res.should.have.status(400);
+        res.body.should.have.property("success").eql(false);
+        res.body.should.have.property("message").eql("Invalid email");
+        done();
+      });
+  });
+
+})
