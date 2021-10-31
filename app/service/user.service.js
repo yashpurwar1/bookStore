@@ -94,6 +94,17 @@ class userService {
             }
         })
     };
+
+    addToCart = (userInfo, callback) =>{
+        userModel.addToCart(userInfo, (err, data)=>{
+            if(err){
+                return callback(err, null)
+            }
+            else{
+                return callback(null, data)
+            }
+        })
+    }
 }
 module.exports = new userService();
   

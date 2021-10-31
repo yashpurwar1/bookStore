@@ -15,6 +15,7 @@ module.exports=(app) =>{
     app.post('/login', controller.login);
     app.post('/forgotPassword', controller.forgotPassword);
     app.put('/resetPassword', helper.verifyToken ,controller.resetPassword);
+    app.put('/addToCart/:id', helper.verifyToken, controller.addToCart)
 
     app.post('/createBook', helper.verifyTokenAndRole, bookController.createBook)
     app.get('/getBooks', helper.verifyToken, bookController.getBooks)
