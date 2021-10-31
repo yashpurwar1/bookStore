@@ -28,7 +28,6 @@ class helper{
         return (req, res, next) => {
             req.role = role;
             next();
-            console.log(req.role)
         }
     }
 
