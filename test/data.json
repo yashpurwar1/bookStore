@@ -32,5 +32,25 @@
             "lastName": "Purwar",
             "email": "yash13@gmail.com"
         }
+    },
+    "login":{
+        "correctLogin":{
+            "email": "y2@gmail.com",
+            "password": "yash1234"
+        },
+        "loginWithWrongEmail":{
+            "email": "yash000@gmail.com",
+            "password": "yash1234"
+        },
+        "loginWithWrongPassword":{
+            "email": "y2@gmail.com",
+            "password": "yash76652000"
+        },
+        "loginWithoutPassword":{
+            "email": "yash16@gmail.com"
+        },
+        "loginWithoutEmail":{
+            "password": "yash76652000"
+        }
     }
 }
