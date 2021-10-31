@@ -309,5 +309,42 @@ describe ('forgotPassword', () =>{
         done();
       });
   });
-
 })
+
+describe('resetPassword', ()=>{
+  it('givenResetPasswordTokenWhenValidShouldReturn204Status', (done) => {
+    const token = data.resetPassword.validToken;
+    const newPassword = data.resetPassword.validPassword;
+    chai
+      .request(index)
+      .put('/resetPassword')
+      .set({ authorization: token })
+      .send(newPassword)
+      .end((error, res) => {
+        if(error){
+          return done(error);
+        }
+        res.should.have.status(204);
+        done();
+      });
+  });
+
+  it('givenResetPasswordTokenWhenInvalidShouldReturn401Status', (done) => {
+    const token = data.resetPassword.invalidToken;
+    const newPassword = data.resetPassword.validPassword;
+    chai
+      .request(index)
+      .put('/resetPassword')
+      .set({ authorization: token })
+      .send(newPassword)
+      .end((error, res) => {
+        if(error){
+          return done(error);
+        }
+        res.should.have.status(401);
+        res.body.should.have.property("success").eql(false);
+        res.body.should.have.property("message").eql("Unauthorized Token or token expired");
+        done();
+      });
+  });
+});
