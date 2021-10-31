@@ -75,6 +75,14 @@
                     "type": "string"
                 }
             }
+        },
+        "addToCart": {
+            "type": "object",
+            "properties": {
+                "qty": {
+                    "type": "number"
+                }
+            }
         }
     },
     "paths": {
@@ -361,6 +369,51 @@
                 "produces": ["application/json"],
                 "responses": {
                     "204": {
+                        "description": "ok"
+                    },
+                    "401":{
+                        "description": "Unauthorized token"
+                    },
+                    "400": {
+                        "description": "Error"
+                    }
+                }
+            }
+        },
+        "/addToCart/{id}": {
+            "put": {
+                "tags": ["Add To Cart"],
+                
+                "description": "Add a book to the cart",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Enter token recieved in login",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Enter id of the book",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Add Book to the cart",
+                        "in": "body",
+                        "description": "Add to Cart",
+                        "schema": { 
+                            "$ref": "#/definitions/addToCart"
+                        }
+                    }
+                ],
+                "produces": ["application/json"],
+                "responses": {
+                    "201": {
                         "description": "ok"
                     },
                     "401":{
