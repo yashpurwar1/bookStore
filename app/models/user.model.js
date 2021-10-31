@@ -123,15 +123,18 @@ class userModel {
             }
             else{
                 const cart = data.cart
-                for(let i=0; i<cart.length; i++){
-                    let item = JSON.parse(cart[i])
-                    if(item.itemId == userInfo.item.itemId){
-                        return callback("Book already in the cart", null)
+                if(cart != null){
+                    for(let i=0; i<cart.length; i++){
+                        let item = JSON.parse(cart[i])
+                        if(item.itemId == userInfo.item.itemId){
+                            return callback("Book already in the cart", null)
+                        }
                     }
                 }
                 const book = JSON.stringify(userInfo.item)
                 user.findOneAndUpdate({email: userInfo.email}, { $push: { cart: book } }, {new: true}, (err, data)=>{
                     if(err){
+                        console.log(err)
                         return callback ("Error in adding to cart", null)
                     }
                     else{
