@@ -290,6 +290,51 @@
                 }
             }
         },
+        "/updateBook/{id}": {
+            "put": {
+                "tags": ["UpdateBook"],
+                
+                "description": "Update a Book",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Enter token recieved in login",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Enter id of the book",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Update Book",
+                        "in": "body",
+                        "description": "Update a Book",
+                        "schema": { 
+                            "$ref": "#/definitions/book"
+                        }
+                    }
+                ],
+                "produces": ["application/json"],
+                "responses": {
+                    "201": {
+                        "description": "ok"
+                    },
+                    "401":{
+                        "description": "Unauthorized token"
+                    },
+                    "400": {
+                        "description": "Error"
+                    }
+                }
+            }
+        },
         "/deleteBook/{id}": {
             "delete": {
                 "tags": ["Delete book By Id"],
