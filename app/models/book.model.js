@@ -66,6 +66,19 @@
         })
     }
 
+    getBookById = (bookId) => {
+      return new Promise((resolve, reject) =>{
+        //Finds all the books in the database
+        Books.findOne({_id: bookId})
+          .then((data) => {
+            resolve(data)
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      })
+  }
+
     updateBookById = async (book) => {
       const filter = {_id: book.bookId};
       const update = {title: book.title, description: book.description, price: book.price, author: book.author};

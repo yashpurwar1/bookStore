@@ -84,6 +84,36 @@ class BookController{
     }
 
     /**
+     * @description:    Fetches book by Id
+     * @method:         getBookByID
+     * @param:          req,res for service
+     */
+     getBookById = (req, res) => {
+        try {
+            const bookId = req.params.bookId
+            bookService.getBookById(bookId)
+            .then((data) => {
+                return res.status(200).json({
+                    message: 'Fetched successfully',
+                    success: true,
+                    data: data
+                });
+            })
+            .catch((error) => {
+                return res.status(400).json({
+                    message: "Not able to fetch",
+                    success: false
+                });
+            })
+        } 
+        catch {
+            return res.status(500).json({
+                message: 'Internal server Error'
+            });
+        }
+    }
+
+    /**
      * @description:    Deletes book by id
      * @method:         deleteBook
      * @param:          req,res for service

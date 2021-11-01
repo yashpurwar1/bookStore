@@ -40,6 +40,22 @@
         })
     }
 
+    /**
+      * @description:    Send response to the controller
+      * @method:         getBookById
+      */
+     getBookById = (bookId) => {
+      return new Promise((resolve, reject) => {
+      bookModel.getBookById(bookId)
+          .then((data) => {
+          resolve(data)
+          })
+          .catch((error) => {
+          reject(error)
+          })
+      })
+  }
+
   /**
   * @description:    Send response to the controller
   * @method:         updateBookById
