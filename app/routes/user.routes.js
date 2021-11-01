@@ -8,6 +8,7 @@
 const helper = require('../utilities/helper')
 const controller = require('../controller/user.controller')
 const bookController = require('../controller/book.controller')
+const redis = require('../utilities/redis')
 module.exports=(app) =>{
     //Api route for user
     app.post('/user/registration', helper.setRole('user'), controller.register);
@@ -19,7 +20,7 @@ module.exports=(app) =>{
 
     app.post('/createBook', helper.verifyTokenAndRole, bookController.createBook)
     app.get('/getBooks', helper.verifyToken, bookController.getBooks)
-    app.get('/getBookById/:bookId', helper.verifyToken, bookController.getBookById)
+    app.get('/getBookById/:bookId', helper.verifyToken, redis.getBookById, bookController.getBookById)
     app.put('/updateBook/:id', helper.verifyTokenAndRole, bookController.updateBookById)
     app.delete('/deleteBook/:id', helper.verifyTokenAndRole, bookController.deleteBook)
 }

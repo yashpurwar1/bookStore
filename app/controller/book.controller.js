@@ -7,6 +7,7 @@
 
 const bookService = require('../service/book.service');
 const validation = require('../utilities/validation');
+const redis = require('../utilities/redis')
 
 class BookController{
     /**
@@ -93,6 +94,7 @@ class BookController{
             const bookId = req.params.bookId
             bookService.getBookById(bookId)
             .then((data) => {
+                redis.setCache(bookId, 600, JSON.stringify(data));
                 return res.status(200).json({
                     message: 'Fetched successfully',
                     success: true,
@@ -125,6 +127,7 @@ class BookController{
             } 
             bookService.deleteBook(id)
             .then((data) => {
+                redis.clearCache(id.id)
                 if(data==null){
                     return res.status(401).json({
                         message: 'Invalid bookId',
@@ -183,6 +186,7 @@ class BookController{
           success: false
         });
       }else{
+        redis.clearCache(book.bookId)
         return res.status(200).json({
           message: 'Updated successfully',
           success: true,
