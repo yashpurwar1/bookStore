@@ -10,10 +10,8 @@ const client = redis.createClient()
 
 class Redis{
     getBookById = (req, res, next) => {
-        console.log("in redis")
         client.get(req.params.bookId, (error, result) => {
         if (error) {
-            console.log(error)
             throw error;
         } else if (result) {
         res.status(200).send({

@@ -8,6 +8,7 @@
 const userService = require('../service/user.service')
 const validation = require('../utilities/validation')
 const nodemailer = require('../utilities/nodemailer')
+const { logger } = require('../../logger/logger.js');
 
 class Controller {
 
@@ -29,6 +30,7 @@ class Controller {
             // To validate the data entered by user
             const registerValidation = validation.registerValidation.validate(user);
             if (registerValidation.error){
+                logger.error("validation failed")
                 return res.status(422).json({
                     success: false,
                     message: "validation failed", 
@@ -36,11 +38,13 @@ class Controller {
             }
             userService.registerUser(user, (error, data) => {
                 if (error) {
+                    logger.error(error)
                     return res.status(400).json({
                         success: false,
                         message: error,
                     });
                 } else{
+                    logger.info("User registered")
                     return res.status(201).json({
                         success: true, 
                         message: "User Registered",
@@ -49,6 +53,7 @@ class Controller {
                 }
             });
         } catch (error) {
+            logger.error("Internal server error")
             return res.status(500).json({
                 success: false,
                 message: "Internal server error",
@@ -73,6 +78,7 @@ class Controller {
             // To validate the data entered by user
             const loginValidation = validation.loginValidation.validate(loginDetails);
             if (loginValidation.error){
+                logger.error("Validation failed")
                 return res.status(422).json({
                     success: false,
                     message: "validation failed", 
@@ -80,12 +86,14 @@ class Controller {
             }
             userService.loginUser(loginDetails, (error, token) => {
                 if (error){
+                    logger.error(error)
                     return res.status(400).json({
                         message: error,
                         success: false,
                     })
                 }
                 else {
+                    logger.info("login success")
                     return res.status(201).json({
                         message: 'Login Success',
                         success: true,
@@ -96,6 +104,7 @@ class Controller {
             });
         }
         catch(error) {
+            logger.error("Internal server error")
             return res.status(500).json({
                 message: "Internal server error",
                 success: false,
@@ -117,6 +126,7 @@ class Controller {
             }
             userService.forgotPassword(user, (error, data) => {
                 if (error){
+                    logger.error(error)
                     return res.status(400).json({
                         message: error,
                         success: false,
@@ -131,6 +141,7 @@ class Controller {
                          `
                     }
                     nodemailer.sendEmail(forgotPasswordMessage);
+                    logger.info("Mail sent successfully")
                     return res.status(250).json({
                         message: "Mail Sent Successful",
                         success: true
@@ -139,6 +150,7 @@ class Controller {
             });
         }
         catch(error) {
+            logger.error("Internal server error")
             return res.status(500).json({
                 message: "Internal server error",
                 success: false,
@@ -161,11 +173,13 @@ class Controller {
             }
             userService.resetPassword(user, (error, data) => {
                 if(error){
+                    logger.error("Password reset failed")
                     return res.status(400).json({
                         message: error,
                         success: false
                     })
                 }
+                logger.info("Password reset successful")
                 return res.status(204).json({
                     message: data,
                     success: true
@@ -174,6 +188,7 @@ class Controller {
             })
         }
         catch(error){
+            logger.error("Internal server error")
             return res.status(500).json({
                 message: "Internal server error",
                 success: false

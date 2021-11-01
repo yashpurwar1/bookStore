@@ -8,6 +8,7 @@
 const bookService = require('../service/book.service');
 const validation = require('../utilities/validation');
 const redis = require('../utilities/redis')
+const { logger } = require('../../logger/logger.js');
 
 class BookController{
     /**
@@ -27,6 +28,7 @@ class BookController{
             // To validate the data entered by user
             const validate = validation.createValidate.validate(book);
             if (validate.error){
+                logger.error(validate.error)
                 return res.status(422).json({
                     success: false,
                     message: "validation failed", 
@@ -34,6 +36,7 @@ class BookController{
             }
             bookService.createBook(book)
                 .then((data) => {
+                    logger.info("Book created")
                 return res.status(201).json({
                     message: "Book created successfully",
                     data: data,
@@ -41,6 +44,7 @@ class BookController{
                 })
                 })
                 .catch(()=>{
+                    logger.error("Book not saved in db")
                 return res.status(400).json({
                     message: "Book not saved in database",
                     success: false
@@ -48,6 +52,7 @@ class BookController{
                 })
         }
         catch(error){
+            logger.error("internal server error")
             return res.status(500).json({
                 message: "Internal server error",
                 success: false
@@ -63,6 +68,7 @@ class BookController{
     getBooks = (req, res) => {
         try {
             bookService.getBooks()
+            logger.info("Fetched successfully")
             .then((data) => {
                 return res.status(200).json({
                 message: 'Fetched successfully',
@@ -71,6 +77,7 @@ class BookController{
                 });
             })
             .catch((error) => {
+                logger.error("Not able to fetch")
                 return res.status(400).json({
                 message: "Not able to fetch",
                 success: false
@@ -78,6 +85,7 @@ class BookController{
             })
         } 
         catch {
+            logger.error("internal server error")
             return res.status(500).json({
                 message: 'Internal server Error'
             });
@@ -95,6 +103,7 @@ class BookController{
             bookService.getBookById(bookId)
             .then((data) => {
                 redis.setCache(bookId, 600, JSON.stringify(data));
+                logger.info("fetched successfully")
                 return res.status(200).json({
                     message: 'Fetched successfully',
                     success: true,
@@ -102,6 +111,7 @@ class BookController{
                 });
             })
             .catch((error) => {
+                logger.error("Not able to fetch")
                 return res.status(400).json({
                     message: "Not able to fetch",
                     success: false
@@ -109,6 +119,7 @@ class BookController{
             })
         } 
         catch {
+            logger.error("internal server error")
             return res.status(500).json({
                 message: 'Internal server Error'
             });
@@ -129,11 +140,13 @@ class BookController{
             .then((data) => {
                 redis.clearCache(id.id)
                 if(data==null){
+                    logger.error("Invalid bookId")
                     return res.status(401).json({
                         message: 'Invalid bookId',
                         success: false
                         });
                 }else{
+                    logger.info("Deleted successful")
                     return res.status(200).json({
                         message: 'Deleted successfully',
                         success: true,
@@ -142,6 +155,7 @@ class BookController{
                 }
             })
             .catch((error) => {
+                logger.error("Not able to fetch")
                 return res.status(400).json({
                 message: "Not able to fetch",
                 success: false
@@ -149,6 +163,7 @@ class BookController{
             })
         } 
         catch {
+            logger.error("internal server error")
             return res.status(500).json({
                 message: 'Internal server Error'
             });
@@ -174,6 +189,7 @@ class BookController{
       // To validate the data entered by user
       const validate = validation.updateValidate.validate(book);
       if (validate.error){
+          logger.error("Validation failed")
         return res.status(422).json({
             success: false,
             message: "validation failed", 
@@ -181,12 +197,14 @@ class BookController{
       }
       const data = await bookService.updateBookById(book)
       if (data.name){
+        logger.error("Book not updated")
         return res.status(400).json({
           message: "Book not updated",
           success: false
         });
       }else{
         redis.clearCache(book.bookId)
+        logger.info("Updated successfully")
         return res.status(200).json({
           message: 'Updated successfully',
           success: true,
@@ -195,8 +213,8 @@ class BookController{
       }
     }
     catch(error){
-      logger.error(error)
-      return res.status(500).json({
+        logger.error("internal server error")
+        return res.status(500).json({
         message: 'Internal server Error'
       });
     }
