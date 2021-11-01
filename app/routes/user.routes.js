@@ -8,6 +8,7 @@
 const helper = require('../utilities/helper')
 const controller = require('../controller/user.controller')
 const bookController = require('../controller/book.controller')
+const cartController = require('../controller/cart.controller')
 const redis = require('../utilities/redis')
 module.exports=(app) =>{
     //Api route for user
@@ -16,11 +17,12 @@ module.exports=(app) =>{
     app.post('/login', controller.login);
     app.post('/forgotPassword', controller.forgotPassword);
     app.put('/resetPassword', helper.verifyToken ,controller.resetPassword);
-    app.put('/addToCart/:id', helper.verifyToken, controller.addToCart)
 
     app.post('/createBook', helper.verifyTokenAndRole, bookController.createBook)
     app.get('/getBooks', helper.verifyToken, bookController.getBooks)
     app.get('/getBookById/:bookId', helper.verifyToken, redis.getBookById, bookController.getBookById)
     app.put('/updateBook/:id', helper.verifyTokenAndRole, bookController.updateBookById)
     app.delete('/deleteBook/:id', helper.verifyTokenAndRole, bookController.deleteBook)
+
+    app.put('/addToCart/:id', helper.verifyToken, cartController.addToCart)
 }
