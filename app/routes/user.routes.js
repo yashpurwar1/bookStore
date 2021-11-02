@@ -25,4 +25,5 @@ module.exports=(app) =>{
     app.delete('/deleteBook/:id', helper.verifyTokenAndRole, bookController.deleteBook)
 
     app.put('/addToCart/:id', helper.verifyToken, cartController.addToCart)
+    app.get('/cartValue', helper.verifyToken, cartController.cartValue)
 }

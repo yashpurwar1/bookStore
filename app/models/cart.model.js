@@ -1,7 +1,5 @@
-const { response } = require('express');
 const mongoose = require('mongoose')
-const userModel = require('../models/user.model')
-
+const bookModel = require('../models/book.model')
 const cartSchema = mongoose.Schema({
     userId :{
         type: mongoose.Schema.Types.ObjectId, ref: 'user' 
@@ -41,11 +39,15 @@ class cartModel{
                     }
                     data.save()
                     .then((res)=>{
-                        let response = {
-                            data: res,
-                            msg: "Added to cart"
-                        }
-                        return callback(null, response)
+                        this.cartValue(userInfo.userId, (err, total)=>{
+                            let response = {
+                                data: res,
+                                msg: "Added to cart",
+                                totalValue: total
+                            }
+                            return callback(null, response)
+                        })
+                        
                     })
                     .catch((error)=>{
                         return callback(error, null)
@@ -66,11 +68,14 @@ class cartModel{
                                     if(err){
                                         return callback("Error in pulling book", null)
                                     }else{
+                                        this.cartValue(userInfo.userId, (err, total)=>{
                                         let response = {
                                             data: res,
-                                            msg: "Book removed from cart"
+                                            msg: "Book removed from cart",
+                                            totalValue: total
                                         }
                                         return callback(null, response)
+                                    })
                                     }
                                 })
                             }else{
@@ -80,11 +85,14 @@ class cartModel{
                                         return callback("Error in updating quantity", null)
                                     }
                                     else{
+                                        this.cartValue(userInfo.userId, (err, total)=>{
                                         let response = {
                                             data: res,
-                                            msg: "Quantity updated"
+                                            msg: "Quantity updated",
+                                            totalValue:total
                                         }
                                         return callback(null, response)
+                                    })
                                     }
                                 })
                             }
@@ -106,11 +114,14 @@ class cartModel{
                                 return callback("Error in adding book", null)
                             }
                             else{
+                                this.cartValue(userInfo.userId, (err, total)=>{
                                 let response = {
                                     data: res,
-                                    msg: "Book Pushed"
+                                    msg: "Book Pushed",
+                                    totalValue: total
                                 }
                                 return callback(null, response)
+                            })
                             }
                         })
                     }
@@ -119,6 +130,34 @@ class cartModel{
             }
         })
         
+    }
+
+    cartValue = (userId, callback) => {
+        cart.findOne({userId: userId}, (err, result)=>{
+            if(err){
+                return callback(err, null)
+            }
+            else{
+                let total = 0;
+                let i = 0
+                if(result.book.length == 0){
+                    return callback(null, 0)
+                }
+                result.book.forEach(element => { 
+                    console.log(element)                   
+                    bookModel.findBook(element.id, (err, data)=>{
+                        total = total + (data.price * element.qty)
+                        console.log("test", total)
+                        i++;
+                        if(i == result.book.length){
+                            return callback(null, total)
+                        }
+                    })
+                });
+
+            }
+        })
+
     }
 }
 module.exports = new cartModel();

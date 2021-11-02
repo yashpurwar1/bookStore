@@ -92,16 +92,22 @@
     }
 
     deleteBook = (id) => {
-        return new Promise((resolve, reject) =>{
-          //Finds all the books in the database
-          Books.findOneAndDelete({ _id: id.id})
-            .then((data) => {
-              resolve(data)
-            })
-            .catch((error) => {
-              reject(error)
-            })
-        })
+      return new Promise((resolve, reject) =>{
+        //Finds all the books in the database
+        Books.findOneAndDelete({ _id: id.id})
+          .then((data) => {
+            resolve(data)
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      })
+    }
+
+    findBook = (id, callback)=>{
+      Books.findOne({id: id}, (err, data)=>{
+        return callback(null, data)
+      })
     }
 }
 module.exports = new BookModel();

@@ -11,5 +11,15 @@ class cartService{
             }
         })
     }
+    cartValue = (userId, callback)=>{
+        cartModel.cartValue(userId, (err, data)=>{
+            if(err){
+                return callback(err, null)
+            }
+            else{
+                return callback(null, data)
+            }
+        })
+    }
 }
 module.exports = new cartService()
