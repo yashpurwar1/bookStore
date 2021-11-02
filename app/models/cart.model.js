@@ -110,7 +110,6 @@ class cartModel{
                         }
                         cart.findByIdAndUpdate(result._id, {$push:{book: newBook}},{new: true}, (err, res)=>{
                             if(err){
-                                console.log(err)
                                 return callback("Error in adding book", null)
                             }
                             else{
@@ -143,11 +142,9 @@ class cartModel{
                 if(result.book.length == 0){
                     return callback(null, 0)
                 }
-                result.book.forEach(element => { 
-                    console.log(element)                   
-                    bookModel.findBook(element.id, (err, data)=>{
+                result.book.forEach(element => {
+                    bookModel.findBook(element.bookId, (err, data)=>{
                         total = total + (data.price * element.qty)
-                        console.log("test", total)
                         i++;
                         if(i == result.book.length){
                             return callback(null, total)

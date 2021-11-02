@@ -105,7 +105,7 @@
     }
 
     findBook = (id, callback)=>{
-      Books.findOne({id: id}, (err, data)=>{
+      Books.findById(id, (err, data)=>{
         return callback(null, data)
       })
     }

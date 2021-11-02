@@ -33,7 +33,6 @@ class cartController{
     cartValue = (req, res)=> {
         try{
             const userId = req.user.id;
-            console.log("in controller", userId)
             cartService.cartValue(userId, (err, data)=>{
                 if(err){
                     return res.status(400).json({
