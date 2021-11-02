@@ -68,8 +68,8 @@ class BookController{
     getBooks = (req, res) => {
         try {
             bookService.getBooks()
-            logger.info("Fetched successfully")
             .then((data) => {
+                logger.info("Fetched successfully")
                 return res.status(200).json({
                 message: 'Fetched successfully',
                 success: true,
