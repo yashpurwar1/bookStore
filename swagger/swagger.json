@@ -403,7 +403,7 @@
                         }
                     },
                     {
-                        "name": "Add Book to the cart",
+                        "name": "Add Bok to the cart",
                         "in": "body",
                         "description": "Add to Cart",
                         "schema": { 
