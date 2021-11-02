@@ -1,3 +1,4 @@
+const { response } = require('express');
 const mongoose = require('mongoose')
 const userModel = require('../models/user.model')
 
@@ -36,9 +37,12 @@ class cartModel{
             else{
                 if(result == null){
                     data.save()
-                    .then((data)=>{
-                        console.log("empty")
-                        return callback(null, data)
+                    .then((res)=>{
+                        let response = {
+                            data: res,
+                            msg: "Added to cart"
+                        }
+                        return callback(null, response)
                     })
                     .catch((error)=>{
                         return callback(error, null)
@@ -47,53 +51,63 @@ class cartModel{
                 else{
                     let updated = false;
                     const index = result.book.findIndex((item)=> item.bookId == userInfo.itemId);
-                    console.log("index = ", index)
+                    //console.log("index = ", index)
                         if(index >= 0){
                             updated = true;
                             const newBook= {
                                 bookId: result.book[index].bookId,
                                 qty: result.book[index].qty + userInfo.qty
                             }
-                            console.log("Old Book", result.book[index])
-                            console.log("newBook = ", newBook)
-                            cart.updateOne({_id: result._id}, {$pull:{book: result.book[index]}},{new: true}, (err,res)=>{
-                                console.log(err, res)
-                            })
-                            cart.updateOne({_id: result._id}, {$push:{book: newBook}},{new: true}, (err, res)=>{
-                                if(err){
-                                    return callback("Error in updating quantity", null)
-                                }
-                                else{
-                                    return callback(null, "book updated")
-                                }
-                            })
-
-                            //code for update "result.book[index].qty" 
+                            if(newBook.qty <= 0 ){
+                                cart.findOneAndUpdate({_id: result._id}, {$pull:{book: result.book[index]}},{new: true}, (err,res)=>{
+                                    if(err){
+                                        return callback("Error in pulling book", null)
+                                    }else{
+                                        let response = {
+                                            data: res,
+                                            msg: "Book removed from cart"
+                                        }
+                                        return callback(null, response)
+                                    }
+                                })
+                            }else{
+                                cart.updateOne({_id: result._id}, {$pull:{book: result.book[index]}},{new: true}, (err,res)=>{                                })
+                                cart.findOneAndUpdate({_id: result._id}, {$push:{book: newBook}},{new: true}, (err, res)=>{
+                                    if(err){
+                                        return callback("Error in updating quantity", null)
+                                    }
+                                    else{
+                                        let response = {
+                                            data: res,
+                                            msg: "Quantity updated"
+                                        }
+                                        return callback(null, response)
+                                    }
+                                })
+                            }
+                            // console.log("Old Book", result.book[index])
+                            // console.log("newBook = ", newBook)
                             
-                            //console.log("element = ", qty)
-                            // cart.findByIdAndUpdate(result._id, {$inc:{book: newBook}},{new: true}, (err, res)=>{
-                            //     if(err){
-                            //         return callback("Error in updating quantity", null)
-                            //     }
-                            //     else{
-                            //         console.log(res)
-                            //         return callback(null, "Quantity updated")
-                            //     }
-                            // })
                         }
                     if(updated == false){
                         const newBook= {
                             bookId: userInfo.itemId,
                             qty: userInfo.qty
                         }
-                        console.log(result)
+                        if(newBook.qty <= 0 ){
+                            return callback("Quantity can not be negative or zero", null)
+                        }
                         cart.findByIdAndUpdate(result._id, {$push:{book: newBook}},{new: true}, (err, res)=>{
                             if(err){
                                 console.log(err)
                                 return callback("Error in adding book", null)
                             }
                             else{
-                                return callback(null, "book Pushed")
+                                let response = {
+                                    data: res,
+                                    msg: "Book Pushed"
+                                }
+                                return callback(null, response)
                             }
                         })
                     }

@@ -15,9 +15,9 @@ class cartController{
                     })
                 }
                 return res.status(201).json({
-                    message: "Item added successfully",
+                    message: data.msg,
                     success: true,
-                    data: data
+                    data: data.data
                 })
             })
         }
