@@ -36,6 +36,9 @@ class cartModel{
             }
             else{
                 if(result == null){
+                    if(data.qty <= 0){
+                        return callback("Qty can not be less than 1", null)
+                    }
                     data.save()
                     .then((res)=>{
                         let response = {
