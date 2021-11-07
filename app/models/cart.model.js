@@ -59,11 +59,8 @@ class cartModel{
                     //console.log("index = ", index)
                         if(index >= 0){
                             updated = true;
-                            const newBook= {
-                                bookId: result.book[index].bookId,
-                                qty: result.book[index].qty + userInfo.qty
-                            }
-                            if(newBook.qty <= 0 ){
+                            const qty = result.book[index].qty + userInfo.qty;
+                            if(qty <= 0 ){
                                 cart.findOneAndUpdate({_id: result._id}, {$pull:{book: result.book[index]}},{new: true}, (err,res)=>{
                                     if(err){
                                         return callback("Error in pulling book", null)
@@ -79,8 +76,10 @@ class cartModel{
                                     }
                                 })
                             }else{
-                                cart.updateOne({_id: result._id}, {$pull:{book: result.book[index]}},{new: true}, (err,res)=>{                                })
-                                cart.findOneAndUpdate({_id: result._id}, {$push:{book: newBook}},{new: true}, (err, res)=>{
+                                //cart.updateOne({_id: result._id}, {$pull:{book: result.book[index]}},{new: true}, (err,res)=>{                                })
+                                //cart.findOneAndUpdate({_id: result._id}, {$push:{book: newBook}},{new: true}, (err, res)=>{
+                                result.book[index].qty = result.book[index].qty + userInfo.qty;
+                                result.save((err, res)=>{    
                                     if(err){
                                         return callback("Error in updating quantity", null)
                                     }
