@@ -133,3 +133,144 @@
 {"_original":{"addedBy":"yashpurwar.yashpurwar@gmail.com","author":"sint","description":"Est tenetur nobis aut dolorem delectus saepe aliquid.","title":"quam"},"details":[{"context":{"key":"price","label":"price"},"message":"\"price\" is required","path":["price"],"type":"any.required"}],"level":"error","timestamp":"2021-11-12T18:46:55.898Z"}
 {"_original":{"addedBy":"yashpurwar.yashpurwar@gmail.com","author":"molestiae","description":"Repudiandae esse eveniet sed voluptate.","title":"ex"},"details":[{"context":{"key":"price","label":"price"},"message":"\"price\" is required","path":["price"],"type":"any.required"}],"level":"error","timestamp":"2021-11-12T18:47:40.398Z"}
 {"_original":{"addedBy":"yashpurwar.yashpurwar@gmail.com","author":"voluptates","description":"Qui error et eos rem consequatur.","title":"qui"},"details":[{"context":{"key":"price","label":"price"},"message":"\"price\" is required","path":["price"],"type":"any.required"}],"level":"error","timestamp":"2021-11-12T18:49:01.879Z"}
+{"_original":{"addedBy":"yashpurwar.yashpurwar@gmail.com","author":"illo","description":"Temporibus nemo et voluptas temporibus enim qui nihil sit consequuntur.","title":"nobis"},"details":[{"context":{"key":"price","label":"price"},"message":"\"price\" is required","path":["price"],"type":"any.required"}],"level":"error","timestamp":"2021-11-12T18:49:26.714Z"}
+{"_original":{"addedBy":"yashpurwar.yashpurwar@gmail.com","author":"placeat","description":"Similique ut expedita dolorem culpa magnam saepe.","title":"sunt"},"details":[{"context":{"key":"price","label":"price"},"message":"\"price\" is required","path":["price"],"type":"any.required"}],"level":"error","timestamp":"2021-11-14T07:22:53.746Z"}
+{"level":"error","message":"Email already registered","timestamp":"2021-11-14T07:22:54.130Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:22:54.137Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:22:54.144Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:22:54.151Z"}
+{"level":"error","message":"Email already registered","timestamp":"2021-11-14T07:22:54.355Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:22:54.362Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:22:54.369Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:22:54.377Z"}
+{"level":"error","message":"Invalid email","timestamp":"2021-11-14T07:22:54.493Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-11-14T07:22:54.592Z"}
+{"level":"error","message":"Validation failed","timestamp":"2021-11-14T07:22:54.598Z"}
+{"level":"error","message":"Validation failed","timestamp":"2021-11-14T07:22:54.608Z"}
+{"level":"error","message":"Invalid email","timestamp":"2021-11-14T07:22:54.663Z"}
+{"_original":{"addedBy":"yashpurwar.yashpurwar@gmail.com","author":"aspernatur","description":"Delectus vero consequuntur quisquam.","title":"aut"},"details":[{"context":{"key":"price","label":"price"},"message":"\"price\" is required","path":["price"],"type":"any.required"}],"level":"error","timestamp":"2021-11-14T07:23:52.408Z"}
+{"level":"error","message":"Email already registered","timestamp":"2021-11-14T07:23:52.741Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:23:52.748Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:23:52.755Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:23:52.761Z"}
+{"level":"error","message":"Email already registered","timestamp":"2021-11-14T07:23:53.056Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:23:53.063Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:23:53.071Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:23:53.078Z"}
+{"level":"error","message":"Invalid email","timestamp":"2021-11-14T07:23:53.207Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-11-14T07:23:53.364Z"}
+{"level":"error","message":"Validation failed","timestamp":"2021-11-14T07:23:53.370Z"}
+{"level":"error","message":"Validation failed","timestamp":"2021-11-14T07:23:53.380Z"}
+{"level":"error","message":"Invalid email","timestamp":"2021-11-14T07:23:53.433Z"}
+{"_original":{"addedBy":"yashpurwar.yashpurwar@gmail.com","author":"cumque","description":"Mollitia est blanditiis.","title":"fugit"},"details":[{"context":{"key":"price","label":"price"},"message":"\"price\" is required","path":["price"],"type":"any.required"}],"level":"error","timestamp":"2021-11-14T07:24:24.975Z"}
+{"level":"error","message":"Email already registered","timestamp":"2021-11-14T07:24:25.375Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:24:25.382Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:24:25.388Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:24:25.397Z"}
+{"level":"error","message":"Email already registered","timestamp":"2021-11-14T07:24:25.607Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:24:25.615Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:24:25.621Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:24:25.628Z"}
+{"level":"error","message":"Invalid email","timestamp":"2021-11-14T07:24:25.748Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-11-14T07:24:25.850Z"}
+{"level":"error","message":"Validation failed","timestamp":"2021-11-14T07:24:25.857Z"}
+{"level":"error","message":"Validation failed","timestamp":"2021-11-14T07:24:25.865Z"}
+{"level":"error","message":"Invalid email","timestamp":"2021-11-14T07:24:25.910Z"}
+{"_original":{"addedBy":"yashpurwar.yashpurwar@gmail.com","author":"accusamus","description":"Et modi facere eligendi.","title":"deleniti"},"details":[{"context":{"key":"price","label":"price"},"message":"\"price\" is required","path":["price"],"type":"any.required"}],"level":"error","timestamp":"2021-11-14T07:25:59.360Z"}
+{"level":"error","message":"Email already registered","timestamp":"2021-11-14T07:25:59.738Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:25:59.745Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:25:59.751Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:25:59.760Z"}
+{"level":"error","message":"Email already registered","timestamp":"2021-11-14T07:25:59.960Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:25:59.966Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:25:59.975Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:25:59.981Z"}
+{"level":"error","message":"Invalid email","timestamp":"2021-11-14T07:26:00.110Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-11-14T07:26:00.210Z"}
+{"level":"error","message":"Validation failed","timestamp":"2021-11-14T07:26:00.217Z"}
+{"level":"error","message":"Validation failed","timestamp":"2021-11-14T07:26:00.226Z"}
+{"level":"error","message":"Invalid email","timestamp":"2021-11-14T07:26:00.267Z"}
+{"_original":{"addedBy":"yashpurwar.yashpurwar@gmail.com","author":"vero","description":"Omnis quia rerum ut eligendi dolore.","title":"quo"},"details":[{"context":{"key":"price","label":"price"},"message":"\"price\" is required","path":["price"],"type":"any.required"}],"level":"error","timestamp":"2021-11-14T07:26:15.731Z"}
+{"level":"error","message":"Email already registered","timestamp":"2021-11-14T07:26:16.195Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:26:16.202Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:26:16.211Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:26:16.218Z"}
+{"level":"error","message":"Email already registered","timestamp":"2021-11-14T07:26:16.447Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:26:16.461Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:26:16.475Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:26:16.489Z"}
+{"level":"error","message":"Invalid email","timestamp":"2021-11-14T07:26:16.627Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-11-14T07:26:16.724Z"}
+{"level":"error","message":"Validation failed","timestamp":"2021-11-14T07:26:16.731Z"}
+{"level":"error","message":"Validation failed","timestamp":"2021-11-14T07:26:16.738Z"}
+{"level":"error","message":"Invalid email","timestamp":"2021-11-14T07:26:16.781Z"}
+{"_original":{"addedBy":"yashpurwar.yashpurwar@gmail.com","author":"a","description":"Qui eum dolorem expedita quo dolorem dicta vero quia.","title":"quasi"},"details":[{"context":{"key":"price","label":"price"},"message":"\"price\" is required","path":["price"],"type":"any.required"}],"level":"error","timestamp":"2021-11-14T07:35:49.825Z"}
+{"level":"error","message":"Email already registered","timestamp":"2021-11-14T07:35:50.196Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:35:50.203Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:35:50.216Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:35:50.223Z"}
+{"level":"error","message":"Email already registered","timestamp":"2021-11-14T07:35:50.429Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:35:50.436Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:35:50.442Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:35:50.451Z"}
+{"level":"error","message":"Invalid email","timestamp":"2021-11-14T07:35:50.563Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-11-14T07:35:50.671Z"}
+{"level":"error","message":"Validation failed","timestamp":"2021-11-14T07:35:50.678Z"}
+{"level":"error","message":"Validation failed","timestamp":"2021-11-14T07:35:50.685Z"}
+{"level":"error","message":"Invalid email","timestamp":"2021-11-14T07:35:50.725Z"}
+{"_original":{"addedBy":"yashpurwar.yashpurwar@gmail.com","author":"hic","description":"Vero maiores et corporis eius et.","title":"sed"},"details":[{"context":{"key":"price","label":"price"},"message":"\"price\" is required","path":["price"],"type":"any.required"}],"level":"error","timestamp":"2021-11-14T07:37:24.111Z"}
+{"level":"error","message":"Email already registered","timestamp":"2021-11-14T07:37:24.625Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:37:24.646Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:37:24.668Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:37:24.691Z"}
+{"level":"error","message":"Email already registered","timestamp":"2021-11-14T07:37:24.917Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:37:24.924Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:37:24.930Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:37:24.937Z"}
+{"level":"error","message":"Invalid email","timestamp":"2021-11-14T07:37:25.050Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-11-14T07:37:25.151Z"}
+{"level":"error","message":"Validation failed","timestamp":"2021-11-14T07:37:25.157Z"}
+{"level":"error","message":"Validation failed","timestamp":"2021-11-14T07:37:25.163Z"}
+{"level":"error","message":"Invalid email","timestamp":"2021-11-14T07:37:25.208Z"}
+{"_original":{"addedBy":"yashpurwar.yashpurwar@gmail.com","author":"vitae","description":"Eos dolor dignissimos ut enim.","title":"atque"},"details":[{"context":{"key":"price","label":"price"},"message":"\"price\" is required","path":["price"],"type":"any.required"}],"level":"error","timestamp":"2021-11-14T07:42:24.889Z"}
+{"level":"error","message":"Email already registered","timestamp":"2021-11-14T07:42:25.336Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:42:25.343Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:42:25.352Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:42:25.358Z"}
+{"level":"error","message":"Email already registered","timestamp":"2021-11-14T07:42:25.572Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:42:25.580Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:42:25.588Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:42:25.595Z"}
+{"level":"error","message":"Invalid email","timestamp":"2021-11-14T07:42:25.709Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-11-14T07:42:25.810Z"}
+{"level":"error","message":"Validation failed","timestamp":"2021-11-14T07:42:25.817Z"}
+{"level":"error","message":"Validation failed","timestamp":"2021-11-14T07:42:25.823Z"}
+{"level":"error","message":"Invalid email","timestamp":"2021-11-14T07:42:25.871Z"}
+{"_original":{"addedBy":"yashpurwar.yashpurwar@gmail.com","author":"repudiandae","description":"Et necessitatibus ipsa iure delectus.","title":"atque"},"details":[{"context":{"key":"price","label":"price"},"message":"\"price\" is required","path":["price"],"type":"any.required"}],"level":"error","timestamp":"2021-11-14T07:42:43.008Z"}
+{"level":"error","message":"Email already registered","timestamp":"2021-11-14T07:42:43.428Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:42:43.435Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:42:43.441Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:42:43.450Z"}
+{"level":"error","message":"Email already registered","timestamp":"2021-11-14T07:42:43.723Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:42:43.730Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:42:43.736Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:42:43.742Z"}
+{"level":"error","message":"Invalid email","timestamp":"2021-11-14T07:42:43.855Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-11-14T07:42:43.958Z"}
+{"level":"error","message":"Validation failed","timestamp":"2021-11-14T07:42:43.966Z"}
+{"level":"error","message":"Validation failed","timestamp":"2021-11-14T07:42:43.972Z"}
+{"level":"error","message":"Invalid email","timestamp":"2021-11-14T07:42:44.024Z"}
+{"_original":{"addedBy":"yashpurwar.yashpurwar@gmail.com","author":"similique","description":"Est dolorem maxime suscipit adipisci.","title":"sunt"},"details":[{"context":{"key":"price","label":"price"},"message":"\"price\" is required","path":["price"],"type":"any.required"}],"level":"error","timestamp":"2021-11-14T07:43:34.702Z"}
+{"level":"error","message":"Email already registered","timestamp":"2021-11-14T07:43:35.175Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:43:35.181Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:43:35.187Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:43:35.196Z"}
+{"level":"error","message":"Email already registered","timestamp":"2021-11-14T07:43:35.438Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:43:35.450Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:43:35.466Z"}
+{"level":"error","message":"validation failed","timestamp":"2021-11-14T07:43:35.482Z"}
+{"level":"error","message":"Invalid email","timestamp":"2021-11-14T07:43:35.609Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-11-14T07:43:35.709Z"}
+{"level":"error","message":"Validation failed","timestamp":"2021-11-14T07:43:35.716Z"}
+{"level":"error","message":"Validation failed","timestamp":"2021-11-14T07:43:35.722Z"}
+{"level":"error","message":"Invalid email","timestamp":"2021-11-14T07:43:35.765Z"}
