@@ -4,7 +4,8 @@
   "description": "A app to keep info about the books",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "nyc mocha ./test --exit --timeout 100000"
+    
   },
   "author": "Yash Purwar",
   "license": "ISC",
@@ -21,6 +22,7 @@
     "mongoose": "^6.0.12",
     "nodemailer": "^6.7.0",
     "nodemon": "^2.0.14",
+    "nyc": "^15.1.0",
     "redis": "^3.1.2",
     "redis-server": "^1.2.2",
     "swagger-jsdoc": "^6.1.0",
