@@ -29,7 +29,7 @@ require('./app/routes/user.routes.js')(app);
 
 // listen for requests
 app.listen(process.env.PORT, () => {
-    console.log(`Server is listening on port : ${process.env.PORT}`);
+    console.log(`Server is listening on port number : ${process.env.PORT}`);
 });
 
 module.exports = app;
